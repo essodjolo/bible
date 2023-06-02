@@ -7,7 +7,36 @@ We worked on YAML version, but we also include a Python script to a JSON from th
 
 The structure is organized in a way that you can access a verse using the path `book.chapter.verse`.
 
-## Examples
+### Excerpts
+
+#### YAML
+
+```yml
+books:
+  Jude:
+    1:
+      1: "Jude, the servant of Jesus Christ, and brother of James, to them that are sanctified by God the Father, and preserved in Jesus Christ, and called:"
+      2: "Mercy unto you, and peace, and love, be multiplied."
+      3: "Beloved, when I gave all diligence to write unto you of the common salvation, it was needful for me to write unto you, and exhort you that ye should earnestly contend for the faith which was once delivered unto the saints."
+```
+
+#### JSON
+
+```json
+{
+  "books": {
+    "Jude": {
+      "1": {
+        "1": "Jude, the servant of Jesus Christ, and brother of James, to them that are sanctified by God the Father, and preserved in Jesus Christ, and called:",
+        "2": "Mercy unto you, and peace, and love, be multiplied.",
+        "3": "Beloved, when I gave all diligence to write unto you of the common salvation, it was needful for me to write unto you, and exhort you that ye should earnestly contend for the faith which was once delivered unto the saints."
+      }
+    }
+  }
+}
+```
+
+## Examples of how to access the content
 
 ### Yq
 

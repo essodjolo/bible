@@ -1,0 +1,5 @@
+.*
+!.gitignore
+
+data/tmp-file.yml
+data/*.json
