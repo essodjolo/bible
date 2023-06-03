@@ -3,3 +3,5 @@
 
 data/tmp-file.yml
 data/*.json
+
+go.sum
