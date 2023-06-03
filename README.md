@@ -36,7 +36,11 @@ books:
 }
 ```
 
-## Examples of how to access the content
+## How to access the content (API, Go, Python, NodeJS, etc.)
+
+You can access the Bible content using **a tool** or **a programming language** of your choice (see exameples below).
+
+In addition, you can also use the provided **API** to explore the Bible (see [The Go REST API](#the-go-rest-api) section).
 
 ### Yq
 
@@ -141,6 +145,10 @@ func main() {
 }
 
 ```
+
+## The Go REST API
+
+🚧 See [go-api](go-api/).
 
 ## Supported languages/versions
 
