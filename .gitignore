@@ -1,7 +1,6 @@
 .*
 !.gitignore
 
-data/tmp-file.yml
-data/*.json
+data/tmp-file*
 
 go.sum
