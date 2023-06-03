@@ -149,7 +149,7 @@ func main() {
 
 ## Contribute
 
-You can contribute to this project in various ways inluding, not limited to:
+You can contribute to this project in various ways including, not limited to:
 
 - review the existing data and reported any error
 - add support for another Bible version/language
