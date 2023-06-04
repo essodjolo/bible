@@ -1,6 +1,6 @@
 # BIBLE
 
-The Bible in computer readable formats (YAML, JSON, etc.).
+The Bible in computer readable formats (YAML, JSON, API, etc.).
 We worked on YAML version, but we also include a Python script to a JSON from the YAML. You can also use any other tool to conver from YAML or JSON to your desired format.
 
 ## Structure

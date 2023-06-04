@@ -21,7 +21,30 @@ When `lookup` is specified:
 
 ## Routes
 
+### `GET /versions`
+
+- Retrieve a list of available versions
+- E.g: `["KJV", "LSG"]`
+
+### `GET /books`
+
+- Retrieve a version's book names
+- E.g (for `LSG`): `["Genèse", "Exode", ... , "Apocalypse"]`
+- `"version": "<version_name>"` is mandatory for this route
+
+Examples:
+
+```js
+GET /books
+{
+  "version": "lsg"
+}
+```
+
 ### `GET /{book}`
+
+- Retrieve the content of a book
+- Search throuh a book
 
 Examples:
 
@@ -39,6 +62,9 @@ GET /Psalms
 
 ### `GET /{book}/{chapter}`
 
+- Retrieve the content of a chapter
+- Search throuh a chapter
+
 Examples:
 
 ```js
@@ -54,13 +80,16 @@ GET /Psalms/23
 
 ### `GET /{book}/{chapter}/{verse}`
 
+- Retrieve the content of a verse
+- Search throuh a verse
+
 Examples:
 
 ```js
 GET /John
 ```
 
-## Request Body struct
+## Request Body type
 
 ```go
 type Body struct {
@@ -73,7 +102,7 @@ type Body struct {
 }
 ```
 
-## Response Body struct
+## Response data types
 
 ```go
 type Verse struct {
@@ -96,4 +125,8 @@ type Book struct {
 type Bible struct {
   Books map[string]map[string]map[string]string
 }
+
+var book []string
+
+var versions []string
 ```
