@@ -1,7 +1,10 @@
-# BIBLE
+# BIBLE (YAML, JSON)
 
 The Bible in computer readable formats (YAML, JSON, API, etc.).
-We worked on YAML version, but we also include a Python script to a JSON from the YAML. You can also use any other tool to conver from YAML or JSON to your desired format.
+
+We basically worked on YAML version, but we also provide a Python [script](scripts/yaml-to-json.py) to convert YAML versions to JSON.
+You can also use any other tool to conver from YAML or JSON to your desired format.
+Finally, you can use the provided **API** to explore the Bible (see [The Go REST API](#the-go-rest-api) section).
 
 ## Structure
 

@@ -24,82 +24,65 @@ When `lookup` is specified:
 ### `GET /versions`
 
 - Retrieve a list of available versions
-- E.g: `["KJV", "LSG"]`
+- E.g:
 
-### `GET /books`
+```json
+[
+  {
+    "code" : "kjv",
+    "name" : "King James Version",
+    "language" : "english"
+  },
+  {
+    "code" : "lsg",
+    "name" : "Louis Segond 1910",
+    "language" : "french"
+  }
+]
+```
+
+### `GET /booklist`
 
 - Retrieve a version's book names
-- E.g (for `LSG`): `["Genèse", "Exode", ... , "Apocalypse"]`
-- `"version": "<version_name>"` is mandatory for this route
+- Parameter `version` is optional. When not set, `kjv` is used.
+- E.g (for `version=lsg`): `["Genèse", "Exode", ... , "Apocalypse"]`
 
 Examples:
 
 ```js
-GET /books
-{
-  "version": "lsg"
-}
+GET /books?version=lsg
 ```
 
-### `GET /{book}`
+### `GET /passage`
 
-- Retrieve the content of a book
-- Search throuh a book
+- Retrieve the content of a book, chapter, or verse.
+- Parameter `version` is optional. When not set, `kjv` is used.
 
 Examples:
 
 ```js
-GET /John
+GET /passage?version=kjv&book=Jude
+
+GET /passage?version=kjv&book=Psalms&chapter=23
+
+GET /passage?version=kjv&book=John&chapter=3&verse=16
 ```
 
-```js
-GET /Psalms
-{
-  "version": "kjv";
-  "lookup": "The LORD is my shepherd"
-}
-```
+### `GET /search`
 
-### `GET /{book}/{chapter}`
-
-- Retrieve the content of a chapter
-- Search throuh a chapter
+- Search a keyword in the whole Bible, or in a book, a chapter, or a verse.
+- Parameter `version` is optional. When not set, `kjv` is used.
 
 Examples:
 
 ```js
-GET /Matthew/5
-{
-  "version": "kjv"
-}
-```
+GET /search?keyword=For God so loved the world
 
-```js
-GET /Psalms/23
-```
+GET /search?keyword=For God so loved the world&book=John
 
-### `GET /{book}/{chapter}/{verse}`
+GET /search?keyword=For God so loved the world&book=John&chapter=3
 
-- Retrieve the content of a verse
-- Search throuh a verse
-
-Examples:
-
-```js
-GET /John
-```
-
-## Request Body type
-
-```go
-type Body struct {
-  // Default version is KJV.
-  Version string
-
-  // Default behaviour is to return the whole passage,
-  // no lookup for a keyword or sentence.
-  Lookup string
-}
+GET /search?keyword=For God so loved the world&book=John&chapter=3&verse=16
 ```
 
 ## Response data types
@@ -126,7 +109,11 @@ type Bible struct {
   Books map[string]map[string]map[string]string
 }
 
-var book []string
+var booklist []string
 
 var versions []string
+
+type SearchReslut struct {
+  Result []Verse
+}
 ```
