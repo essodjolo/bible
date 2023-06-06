@@ -15,7 +15,6 @@ The structure is organized in a way that you can access a verse using the path `
 #### YAML
 
 ```yml
-books:
   Jude:
     1:
       1: "Jude, the servant of Jesus Christ, and brother of James, to them that are sanctified by God the Father, and preserved in Jesus Christ, and called:"
@@ -27,7 +26,6 @@ books:
 
 ```json
 {
-  "books": {
     "Jude": {
       "1": {
         "1": "Jude, the servant of Jesus Christ, and brother of James, to them that are sanctified by God the Father, and preserved in Jesus Christ, and called:",
@@ -35,7 +33,6 @@ books:
         "3": "Beloved, when I gave all diligence to write unto you of the common salvation, it was needful for me to write unto you, and exhort you that ye should earnestly contend for the faith which was once delivered unto the saints."
       }
     }
-  }
 }
 ```
 
