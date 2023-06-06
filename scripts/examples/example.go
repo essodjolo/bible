@@ -8,29 +8,24 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// Bible is a nested struct that helps to load the Bible content.
-type Bible struct {
-	Books struct {
-		// Will capture only the books I want to work with.
-		Psalms map[string]map[string]string `yaml:"Psalms"`
-		John   map[string]map[string]string `yaml:"John"`
-		Jude   map[string]map[string]string `yaml:"Jude"`
-	} `yaml:"books"`
-}
+type Bible map[string]map[string]map[string]string
 
 func main() {
 	// Path to the Bible file.
-	const data = "../../data/kjv.yml"
+	data_folder := "data/"
+
+	// Path to the Bible file.
+	bible_file_path := data_folder + "kjv.yml"
 
 	// Read the Bible content.
-	kjv_bible, err := os.ReadFile(data)
+	bible_content, err := os.ReadFile(bible_file_path)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	//Unmarshal the Bible YAML data into a Bible struct varibale
+	//Unmarshal the Bible YAML data
 	var bible Bible
-	err = yaml.Unmarshal(kjv_bible, &bible)
+	err = yaml.Unmarshal(bible_content, &bible)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -39,13 +34,13 @@ func main() {
 	chapter := "3"
 	verse := "16"
 	fmt.Println("John " + chapter + ":" + verse)
-	fmt.Println(bible.Books.John[chapter][verse])
+	fmt.Println(bible["John"][chapter][verse])
 
 	// Printing Psalms 23
 	fmt.Println("\n\nPsalms 23")
-	fmt.Println(bible.Books.Psalms["23"])
+	fmt.Println(bible["Psalms"]["23"])
 
 	// Printing Jude
 	fmt.Println("\n\nJude:")
-	fmt.Println(bible.Books.Jude)
+	fmt.Println(bible["Jude"])
 }
