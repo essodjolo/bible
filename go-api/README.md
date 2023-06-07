@@ -1,24 +1,11 @@
 # Bible Go API
 
-## Features
-
 - Browse a version of the Bible using a REST API
-- Ability to search
 - File-based database. However you can use a NoSQL database or search engine (Eg: Elasticsearch), in which case, you have to adjust the provided code.
 
-## Implmemented Routes
+## API documentation
 
-- GET /bible/:version
-- GET /booklist/:version (alias GET /books)
-- GET /:book/:version
-- GET /versionlist (alias GET /versions)
-
-## TODO
-
-- GET /:book/:chapter/:version
-- GET /:book/:chapter/:verse/:version
-- GET /search/:version/<keyword>
-- Generate OpenAPI specs
+https://app.swaggerhub.com/apis/essodjolo/bible-go-api/1.0.0-oas3.1
 
 ## Test the API
 

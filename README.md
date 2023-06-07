@@ -143,11 +143,21 @@ func main() {
 
 ## The Go REST API
 
-🚧 See [go-api](go-api/).
+- Browse a version of the Bible using a REST API
+- File-based database. However you can use a NoSQL database or search engine (Eg: Elasticsearch), in which case, you have to adjust the provided code.
 
-<img width="891" alt="Screenshot 2023-06-07 at 09 47 30" src="https://github.com/essodjolo/bible/assets/8897253/82f25e0e-fe8a-48b0-8ebb-498763e7ac1a">
+### API documentation
 
-<img width="1275" alt="Screenshot 2023-06-07 at 09 45 38" src="https://github.com/essodjolo/bible/assets/8897253/4ee7282b-1d87-4e19-9211-171469e6b3cd">
+https://app.swaggerhub.com/apis/essodjolo/bible-go-api/1.0.0-oas3.1
+
+### Test the API
+
+```bash
+git clone https://github.com/essodjolo/bible.git
+cd bible/go-api
+go mod tidy
+go run .
+```
 
 ## Supported languages/versions
 
