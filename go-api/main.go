@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -31,15 +32,25 @@ func main() {
 
 	router.GET("/bible/:version", getBible)
 	router.GET("/booklist/:version", getBookList)
+	// /books is an alias for /booklist
+	router.GET("/versionlist", getVersionList)
+	// /versions is an alias for /booklist
+	router.GET("/versions", getVersionList)
 	router.GET("/:book/:version", getBook)
 
 	router.Run("localhost:8080")
 }
 
 // Return the whole Bible for a given version.
+func getVersionList(c *gin.Context) {
+	_, versions_list := getSupportedVersions()
+	c.IndentedJSON(http.StatusOK, versions_list)
+}
+
+// Return the whole Bible for a given version.
 func getBible(c *gin.Context) {
 	// Make sure the version is supported.
-	version := titleCase(c.Param("version"))
+	version := strings.ToLower(c.Param("version"))
 	if isVersionSupported(version) {
 		bible, err := loadBible(version)
 
@@ -62,7 +73,7 @@ func getBible(c *gin.Context) {
 // Returns the list of book names in a given Bible version.
 func getBookList(c *gin.Context) {
 	// Make sure the version is supported.
-	version := titleCase(c.Param("version"))
+	version := strings.ToLower(c.Param("version"))
 	if isVersionSupported(version) {
 		bible, err := loadBible(version)
 
@@ -93,7 +104,7 @@ func getBookList(c *gin.Context) {
 // Returns the content of a Bible book.
 func getBook(c *gin.Context) {
 	book := titleCase(c.Param("book"))
-	version := titleCase(c.Param("version"))
+	version := strings.ToLower(c.Param("version"))
 
 	// Make sure the version is supported.
 	if isVersionSupported(version) {
@@ -125,12 +136,6 @@ func getBook(c *gin.Context) {
 
 }
 
-// Return strings in Title case.
-func titleCase(s string) string {
-	titleCase := cases.Title(language.Und)
-	return titleCase.String(s)
-}
-
 // Loads the bible file and unmarshal the content into a map.
 func loadBible(version string) (Bible, error) {
 	// Path to the Bible file.
@@ -160,16 +165,31 @@ func loadBible(version string) (Bible, error) {
 
 // Checks if a version is supported.
 func isVersionSupported(version string) bool {
-	// The format is #<version1>#<version2>#.
-	// We don't want to use a slice to hols the list of supported version.
-	supported_versions := "#kjv#lsg#test#"
-
+	supported_versions, _ := getSupportedVersions()
 	// This condition checks if the version is among the supported ones.
 	// "#"+version+"#" is a tip to eliminate cases where "version" is empty.
+	fmt.Println("#" + version + "#")
 	return strings.Contains(supported_versions, "#"+version+"#")
+}
+
+// Return the supported version as string AND as a slice.
+func getSupportedVersions() (string, []string) {
+	// The format is #<version1>#<version2>#.
+	// We don't want to use a slice to hols the list of supported version.
+	versions_string := "#kjv#lsg#test#"
+	versions_slice := strings.Split(versions_string, "#")
+	// the first and last element are empty, we remove them.
+	versions_slice = versions_slice[1 : len(versions_slice)-1]
+	return versions_string, versions_slice
+}
+
+// Return strings in Title case.
+func titleCase(s string) string {
+	titleCase := cases.Title(language.Und)
+	return titleCase.String(s)
 }
 
 // TODO:
 //		- GET /:book/:chapter/:version
 //		- GET /:book/:chapter/:verse/:version
-//		- GET /versions
+//		- GET /search/:version/<keyword>

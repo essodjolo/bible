@@ -9,14 +9,15 @@
 ## Implmemented Routes
 
 - GET /bible/:version
-- GET /booklist/:version
-- GET /:book/:version"
+- GET /booklist/:version (alias GET /books)
+- GET /:book/:version
+- GET /versionlist (alias GET /versions)
 
 ## TODO
 
 - GET /:book/:chapter/:version
 - GET /:book/:chapter/:verse/:version
-- GET /versions
+- GET /search/:version/<keyword>
 - Generate OpenAPI specs
 
 ## Test the API
