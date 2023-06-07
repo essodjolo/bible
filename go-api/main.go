@@ -288,7 +288,7 @@ func isVersionSupported(version string) bool {
 func getSupportedVersions() (string, []string) {
 	// The format is #<version1>#<version2>#.
 	// We don't want to use a slice to hols the list of supported version.
-	versions_string := "#kjv#lsg#test#"
+	versions_string := "#kjv#lsg#"
 	versions_slice := strings.Split(versions_string, "#")
 	// the first and last element are empty, we remove them.
 	versions_slice = versions_slice[1 : len(versions_slice)-1]

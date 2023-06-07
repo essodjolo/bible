@@ -2,6 +2,6 @@
 !.gitignore
 
 data/tmp-file*
-data/tmest*
+data/test*
 
 go.sum
