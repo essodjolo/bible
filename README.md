@@ -145,6 +145,10 @@ func main() {
 
 🚧 See [go-api](go-api/).
 
+<img width="891" alt="Screenshot 2023-06-07 at 09 47 30" src="https://github.com/essodjolo/bible/assets/8897253/82f25e0e-fe8a-48b0-8ebb-498763e7ac1a">
+
+<img width="1275" alt="Screenshot 2023-06-07 at 09 45 38" src="https://github.com/essodjolo/bible/assets/8897253/4ee7282b-1d87-4e19-9211-171469e6b3cd">
+
 ## Supported languages/versions
 
 - 🇬🇧 King James Version
