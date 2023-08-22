@@ -161,8 +161,8 @@ go run .
 
 ## Supported languages/versions
 
-- 🇬🇧 King James Version
-- 🇫🇷 Louis Second 1910
+- 🇬🇧 King James Version ([source](https://www.o-bible.com/download/kjv.txt))
+- 🇫🇷 Louis Second 1910 ([source](http://www.info-bible.org/lsg/INDEX.html))
 
 ## Contribute
 
